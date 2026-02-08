@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok-to-Trip - Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gradient-start: #FF6B35;
+            --gradient-end: #E63946;
+            --dark: #1a1a2e;
+            --light: #ffffff;
+            --gray: #6c757d;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0.05;
+            border-radius: 0 0 0 50%;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .gradient-bg::before {
+            display: none;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 60px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Problem Cards */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .problem-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .problem-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .problem-content p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        /* Solution Flow */
+        .solution-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
+            gap: 20px;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .flow-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .flow-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .flow-desc {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Product Demo */
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .demo-mockup {
+            background: linear-gradient(135deg, #2a2a4a, #1a1a2e);
+            border-radius: 30px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mockup-screen {
+            background: #0f0f1a;
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 400px;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .mockup-dot.red { background: #ff5f56; }
+        .mockup-dot.yellow { background: #ffbd2e; }
+        .mockup-dot.green { background: #27c93f; }
+
+        .mockup-content {
+            font-family: 'Monaco', monospace;
+            font-size: 0.85rem;
+        }
+
+        .mockup-url {
+            background: rgba(255,107,53,0.2);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: var(--gradient-start);
+        }
+
+        .mockup-result {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .mockup-result h4 {
+            color: var(--gradient-start);
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mockup-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mockup-item:last-child {
+            border: none;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .feature-check {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Market Size */
+        .market-visual {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            height: 300px;
+        }
+
+        .market-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar {
+            width: 120px;
+            background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .bar.tam { height: 280px; }
+        .bar.sam { height: 180px; opacity: 0.8; }
+        .bar.som { height: 100px; opacity: 0.6; }
+
+        .bar-label {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .bar-desc {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            text-align: center;
+            max-width: 150px;
+        }
+
+        /* Business Model */
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .model-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .model-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .model-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .model-desc {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .model-revenue {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gradient-start);
+        }
+
+        /* Roadmap */
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .roadmap-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px 25px;
+            position: relative;
+        }
+
+        .roadmap-item.active {
+            background: rgba(255,107,53,0.1);
+            border-color: var(--gradient-start);
+        }
+
+        .roadmap-phase {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gradient-start);
+            margin-bottom: 10px;
+        }
+
+        .roadmap-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .roadmap-list {
+            list-style: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .roadmap-list li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .roadmap-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            background: var(--gradient-start);
+            border-radius: 50%;
+        }
+
+        /* Competition */
+        .competition-table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+
+        .competition-table th,
+        .competition-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .competition-table th {
+            font-weight: 600;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .competition-table th:first-child,
+        .competition-table td:first-child {
+            text-align: left;
+        }
+
+        .competition-table td:first-child {
+            font-weight: 600;
+        }
+
+        .competition-table tr:last-child td {
+            border: none;
+        }
+
+        .check { color: #27c93f; font-size: 1.5rem; }
+        .cross { color: #ff5f56; font-size: 1.5rem; }
+
+        .highlight-row {
+            background: rgba(255,107,53,0.1);
+        }
+
+        .highlight-row td:first-child {
+            color: var(--gradient-start);
+        }
+
+        /* Acquirers */
+        .acquirer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .acquirer-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .acquirer-logo {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .acquirer-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .acquirer-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            text-align: center;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--gradient-start);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Ask Slide */
+        .ask-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .ask-amount {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid var(--gradient-start);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .ask-number {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ask-label {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .use-of-funds h3 {
+            margin-bottom: 30px;
+        }
+
+        .fund-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .fund-bar-container {
+            flex: 1;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+
+        .fund-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .fund-percent {
+            width: 50px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* CTA Slide */
+        .cta-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-tagline {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-contact {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .cta-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .cta-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot:hover,
+        .nav-dot.active {
+            background: var(--gradient-start);
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .slide {
+                padding: 40px;
+            }
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            .stats-grid,
+            .model-grid,
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .roadmap { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .stats-grid,
+            .problem-grid,
+            .model-grid,
+            .team-grid,
+            .ask-grid,
+            .acquirer-grid { grid-template-columns: 1fr; }
+            .solution-flow,
+            .roadmap { flex-direction: column; }
+            .demo-container { grid-template-columns: 1fr; }
+            .market-visual { flex-direction: row; height: auto; }
+            .bar { width: 80px; }
+        }
+
+        /* Print styles for PDF export */
+        @media print {
+            .slide {
+                page-break-after: always;
+                min-height: 100vh;
+            }
+            .nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <nav class="nav">
+        <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(1)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(2)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(3)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(4)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(5)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(6)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(7)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(8)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(9)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(10)"></div>
+    </nav>
+
+    <!-- Slide 1: Title -->
+    <section class="slide gradient-bg" id="slide-0">
+        <div class="logo">
+            <div class="logo-icon">T</div>
+            <span class="logo-text">TikTok-to-Trip</span>
+        </div>
+        <h1>Turn Viral Travel Content<br>Into Real Adventures</h1>
+        <p class="subtitle">AI-powered app that transforms social media travel inspiration<br>into actionable, bookable trip itineraries</p>
+        <div class="stats-grid" style="margin-top: 60px;">
+            <div class="stat-card" style="background: rgba(255,255,255,0.1);">
+                <div class="stat-number" style="-webkit-text-fill-color: white;">1 in 3</div>
+                <div class="stat-label">travelers inspired by social media</div>
+            </div>
+            <div class="stat-card" style="background: rgba(255,255,255,0.1);">
+                <div class="stat-number" style="-webkit-text-fill-color: white;">6 hrs</div>
+                <div class="stat-label">average trip planning time</div>
+            </div>
+            <div class="stat-card" style="background: rgba(255,255,255,0.1);">
+                <div class="stat-number" style="-webkit-text-fill-color: white;">$0</div>
+                <div class="stat-label">solutions bridging the gap</div>
+            </div>
+        </div>
+        <div class="slide-number">01</div>
+    </section>
+
+    <!-- Slide 2: Problem -->
+    <section class="slide" id="slide-1">
+        <h2>The Problem: <span class="gradient-text">Inspiration to Action Gap</span></h2>
+        <p class="subtitle" style="opacity: 0.7;">Gen Z and Millennials discover amazing travel content daily, but turning it into real trips is a nightmare.</p>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-icon">&#128368;</div>
+                <div class="problem-content">
+                    <h4>6+ Hours of Manual Planning</h4>
+                    <p>43% of travelers say creating itineraries is the most time-consuming part of trip planning. Manually researching each location mentioned takes forever.</p>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">&#128269;</div>
+                <div class="problem-content">
+                    <h4>Lost in Translation</h4>
+                    <p>That amazing restaurant from the TikTok? Good luck finding the exact address, hours, and how to book. Most details are lost or hard to extract.</p>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">&#128200;</div>
+                <div class="problem-content">
+                    <h4>Trust Gap in Traditional Platforms</h4>
+                    <p>77% of travelers look for friends' recommendations first. Traditional travel sites feel impersonal and inauthentic compared to creator content.</p>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">&#127919;</div>
+                <div class="problem-content">
+                    <h4>Craving Authentic Experiences</h4>
+                    <p>34% prioritize "authentic local experiences" post-pandemic. Cookie-cutter tourist itineraries no longer cut it for modern travelers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">02</div>
+    </section>
+
+    <!-- Slide 3: Solution -->
+    <section class="slide" id="slide-2">
+        <h2>Our Solution: <span class="gradient-text">Paste. Extract. Travel.</span></h2>
+        <p class="subtitle" style="opacity: 0.7;">TikTok-to-Trip uses AI to instantly transform any travel video into a complete, bookable itinerary.</p>
+
+        <div class="solution-flow">
+            <div class="flow-step">
+                <div class="flow-icon">&#128279;</div>
+                <div class="flow-title">Paste URL</div>
+                <div class="flow-desc">Share any TikTok, Instagram Reel, or YouTube travel video</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-icon">&#129302;</div>
+                <div class="flow-title">AI Extraction</div>
+                <div class="flow-desc">Our AI identifies all locations, restaurants, activities, and hidden gems</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-icon">&#128197;</div>
+                <div class="flow-title">Smart Itinerary</div>
+                <div class="flow-desc">Generates day-by-day plans with tips, addresses, and travel times</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-icon">&#127881;</div>
+                <div class="flow-title">Book & Go</div>
+                <div class="flow-desc">One-click booking links for hotels, tours, and reservations</div>
+            </div>
+        </div>
+        <div class="slide-number">03</div>
+    </section>
+
+    <!-- Slide 4: Product Demo -->
+    <section class="slide" id="slide-3">
+        <h2>How It Works</h2>
+
+        <div class="demo-container">
+            <div class="demo-mockup">
+                <div class="mockup-screen">
+                    <div class="mockup-header">
+                        <div class="mockup-dot red"></div>
+                        <div class="mockup-dot yellow"></div>
+                        <div class="mockup-dot green"></div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-url">
+                            https://tiktok.com/@travelblogger/video/7234567890
+                        </div>
+                        <div class="mockup-result">
+                            <h4>&#9889; AI Extracted: "3 Days in Lisbon"</h4>
+                            <div class="mockup-item">
+                                <span>&#127860;</span> Time Out Market - Food Hall
+                            </div>
+                            <div class="mockup-item">
+                                <span>&#128652;</span> Tram 28 - Historic Route
+                            </div>
+                            <div class="mockup-item">
+                                <span>&#127974;</span> Belem Tower - Monument
+                            </div>
+                            <div class="mockup-item">
+                                <span>&#127854;</span> Pasteis de Belem - Bakery
+                            </div>
+                            <div class="mockup-item">
+                                <span>&#127750;</span> LX Factory - Market
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Intelligent Features</h3>
+                <ul class="feature-list">
+                    <li>
+                        <span class="feature-check">&#10003;</span>
+                        <span><strong>Multi-platform support</strong> - TikTok, Instagram, YouTube Shorts</span>
+                    </li>
+                    <li>
+                        <span class="feature-check">&#10003;</span>
+                        <span><strong>Visual AI analysis</strong> - Identifies locations from video frames</span>
+                    </li>
+                    <li>
+                        <span class="feature-check">&#10003;</span>
+                        <span><strong>Audio transcription</strong> - Captures every tip and recommendation</span>
+                    </li>
+                    <li>
+                        <span class="feature-check">&#10003;</span>
+                        <span><strong>Smart scheduling</strong> - Optimizes routes and timing</span>
+                    </li>
+                    <li>
+                        <span class="feature-check">&#10003;</span>
+                        <span><strong>Budget estimation</strong> - Cost breakdown per activity</span>
+                    </li>
+                    <li>
+                        <span class="feature-check">&#10003;</span>
+                        <span><strong>Integrated booking</strong> - Direct links to reserve everything</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-number">04</div>
+    </section>
+
+    <!-- Slide 5: Market Size -->
+    <section class="slide" id="slide-4">
+        <h2>Market Opportunity</h2>
+        <p class="subtitle" style="opacity: 0.7;">The intersection of social media, AI, and travel creates a massive untapped market.</p>
+
+        <div class="market-visual">
+            <div class="market-bar">
+                <div class="bar tam">$1.7T</div>
+                <div class="bar-label">TAM</div>
+                <div class="bar-desc">Global Travel & Tourism Market</div>
+            </div>
+            <div class="market-bar">
+                <div class="bar sam">$89B</div>
+                <div class="bar-label">SAM</div>
+                <div class="bar-desc">Online Travel Planning & Booking</div>
+            </div>
+            <div class="market-bar">
+                <div class="bar som">$12B</div>
+                <div class="bar-label">SOM</div>
+                <div class="bar-desc">Social-Inspired Travel Segment</div>
+            </div>
+        </div>
+
+        <div class="stats-grid" style="margin-top: 60px;">
+            <div class="stat-card">
+                <div class="stat-number">1B+</div>
+                <div class="stat-label">TikTok monthly active users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2B+</div>
+                <div class="stat-label">Instagram monthly active users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">71%</div>
+                <div class="stat-label">of Gen Z use TikTok for discovery</div>
+            </div>
+        </div>
+        <div class="slide-number">05</div>
+    </section>
+
+    <!-- Slide 6: Business Model -->
+    <section class="slide" id="slide-5">
+        <h2>Business Model</h2>
+        <p class="subtitle" style="opacity: 0.7;">Three diversified revenue streams for sustainable growth.</p>
+
+        <div class="model-grid">
+            <div class="model-card">
+                <div class="model-icon">&#128081;</div>
+                <div class="model-title">Freemium Subscription</div>
+                <div class="model-desc">Free tier with 3 itineraries/month. Premium ($9.99/mo) unlocks unlimited trips, advanced AI features, and offline access.</div>
+                <div class="model-revenue">60% of revenue</div>
+            </div>
+            <div class="model-card">
+                <div class="model-icon">&#128176;</div>
+                <div class="model-title">Affiliate Commissions</div>
+                <div class="model-desc">Earn 5-15% on every hotel, experience, and restaurant booking made through our integrated links.</div>
+                <div class="model-revenue">30% of revenue</div>
+            </div>
+            <div class="model-card">
+                <div class="model-icon">&#127970;</div>
+                <div class="model-title">B2B Partnerships</div>
+                <div class="model-desc">White-label solutions for tourism boards, travel brands, and hospitality companies to leverage creator content.</div>
+                <div class="model-revenue">10% of revenue</div>
+            </div>
+        </div>
+        <div class="slide-number">06</div>
+    </section>
+
+    <!-- Slide 7: Traction & Roadmap -->
+    <section class="slide" id="slide-6">
+        <h2>Roadmap</h2>
+        <p class="subtitle" style="opacity: 0.7;">Strategic milestones to market leadership.</p>
+
+        <div class="roadmap">
+            <div class="roadmap-item active">
+                <div class="roadmap-phase">Q1 2026</div>
+                <div class="roadmap-title">Launch MVP</div>
+                <ul class="roadmap-list">
+                    <li>TikTok URL extraction</li>
+                    <li>Basic itinerary generation</li>
+                    <li>Web app launch</li>
+                    <li>First 10K users</li>
+                </ul>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q2 2026</div>
+                <div class="roadmap-title">Platform Expansion</div>
+                <ul class="roadmap-list">
+                    <li>Instagram Reels support</li>
+                    <li>YouTube Shorts integration</li>
+                    <li>Mobile app (iOS/Android)</li>
+                    <li>Booking partnerships</li>
+                </ul>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q3 2026</div>
+                <div class="roadmap-title">Monetization</div>
+                <ul class="roadmap-list">
+                    <li>Premium subscription launch</li>
+                    <li>Affiliate program live</li>
+                    <li>50K active users</li>
+                    <li>First B2B contracts</li>
+                </ul>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q4 2026</div>
+                <div class="roadmap-title">Scale & Growth</div>
+                <ul class="roadmap-list">
+                    <li>200K+ users</li>
+                    <li>Creator partnerships</li>
+                    <li>International expansion</li>
+                    <li>Series A preparation</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-number">07</div>
+    </section>
+
+    <!-- Slide 8: Competition -->
+    <section class="slide" id="slide-7">
+        <h2>Competitive Landscape</h2>
+        <p class="subtitle" style="opacity: 0.7;">We're the only player bridging social media content directly to travel planning.</p>
+
+        <table class="competition-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>TikTok-to-Trip</th>
+                    <th>Layla AI</th>
+                    <th>Swifty (Revolut)</th>
+                    <th>Traditional OTAs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td>Social Media URL Import</td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                </tr>
+                <tr>
+                    <td>AI Itinerary Generation</td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                </tr>
+                <tr>
+                    <td>Video Content Analysis</td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                </tr>
+                <tr>
+                    <td>Booking Integration</td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                    <td>Creator-Sourced Content</td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                    <td><span class="cross">&#10007;</span></td>
+                </tr>
+                <tr>
+                    <td>Gen Z Focus</td>
+                    <td><span class="check">&#10003;</span></td>
+                    <td>Partial</td>
+                    <td>Partial</td>
+                    <td><span class="cross">&#10007;</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 40px; padding: 25px 30px; background: rgba(255,107,53,0.1); border-left: 4px solid var(--gradient-start); border-radius: 8px;">
+            <strong style="color: var(--gradient-start);">Recent Market Signal:</strong> Swifty was acquired by Revolut (Oct 2025), validating the AI travel agent space. We occupy a unique position they cannot easily replicate.
+        </div>
+        <div class="slide-number">08</div>
+    </section>
+
+    <!-- Slide 9: Strategic Acquirers -->
+    <section class="slide" id="slide-8">
+        <h2>Strategic Acquisition Potential</h2>
+        <p class="subtitle" style="opacity: 0.7;">Multiple natural acquirers seeking content-to-commerce capabilities.</p>
+
+        <div class="acquirer-grid">
+            <div class="acquirer-card">
+                <div class="acquirer-logo">TT</div>
+                <div class="acquirer-info">
+                    <h4>TikTok / ByteDance</h4>
+                    <p>Adds commerce layer to their travel content. Keeps users in-app through booking.</p>
+                </div>
+            </div>
+            <div class="acquirer-card">
+                <div class="acquirer-logo">IG</div>
+                <div class="acquirer-info">
+                    <h4>Meta / Instagram</h4>
+                    <p>Brings travel utility to Reels. Creates new monetization path for creators.</p>
+                </div>
+            </div>
+            <div class="acquirer-card">
+                <div class="acquirer-logo">B</div>
+                <div class="acquirer-info">
+                    <h4>Booking.com / Expedia</h4>
+                    <p>Content-to-commerce pipeline. Captures demand at inspiration moment.</p>
+                </div>
+            </div>
+            <div class="acquirer-card">
+                <div class="acquirer-logo">R</div>
+                <div class="acquirer-info">
+                    <h4>Revolut</h4>
+                    <p>Complements Swifty acquisition. Expands social-first travel strategy.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">09</div>
+    </section>
+
+    <!-- Slide 10: Team -->
+    <section class="slide" id="slide-9">
+        <h2>The Team</h2>
+        <p class="subtitle" style="opacity: 0.7;">Experienced founders at the intersection of AI, travel, and social media.</p>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">[Founder Name]</div>
+                <div class="team-role">CEO & Co-founder</div>
+                <div class="team-bio">Background in consumer tech and travel. Previously at [Company]. Stanford MBA.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">[Founder Name]</div>
+                <div class="team-role">CTO & Co-founder</div>
+                <div class="team-bio">AI/ML expert. Built recommendation systems at scale. Ex-[Tech Company]. MIT CS.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">[Founder Name]</div>
+                <div class="team-role">CPO & Co-founder</div>
+                <div class="team-bio">Product leader with creator economy experience. Previously led product at [Company].</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 16px;">
+            <h4 style="margin-bottom: 15px;">Advisors from</h4>
+            <div style="display: flex; justify-content: center; gap: 50px; opacity: 0.6; font-size: 1.2rem;">
+                <span>[Travel Company]</span>
+                <span>[Tech Giant]</span>
+                <span>[VC Firm]</span>
+                <span>[Creator Platform]</span>
+            </div>
+        </div>
+        <div class="slide-number">10</div>
+    </section>
+
+    <!-- Slide 11: Ask -->
+    <section class="slide gradient-bg" id="slide-10">
+        <h2 style="text-align: center;">The Ask</h2>
+
+        <div class="ask-grid">
+            <div class="ask-amount">
+                <div class="ask-number" style="-webkit-text-fill-color: white;">$2M</div>
+                <div class="ask-label">Seed Round</div>
+            </div>
+
+            <div class="use-of-funds">
+                <h3>Use of Funds</h3>
+                <div class="fund-item">
+                    <div class="fund-bar-container">
+                        <div class="fund-bar" style="width: 45%;">Engineering & AI</div>
+                    </div>
+                    <span class="fund-percent">45%</span>
+                </div>
+                <div class="fund-item">
+                    <div class="fund-bar-container">
+                        <div class="fund-bar" style="width: 25%;">Marketing & Growth</div>
+                    </div>
+                    <span class="fund-percent">25%</span>
+                </div>
+                <div class="fund-item">
+                    <div class="fund-bar-container">
+                        <div class="fund-bar" style="width: 15%;">Partnerships</div>
+                    </div>
+                    <span class="fund-percent">15%</span>
+                </div>
+                <div class="fund-item">
+                    <div class="fund-bar-container">
+                        <div class="fund-bar" style="width: 15%;">Operations</div>
+                    </div>
+                    <span class="fund-percent">15%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-content" style="margin-top: 60px;">
+            <p class="cta-tagline">Join us in transforming how a generation travels.</p>
+            <div class="cta-contact">
+                <div class="cta-item">
+                    <div class="cta-icon">&#128231;</div>
+                    <span>founders@tiktoktotrip.com</span>
+                </div>
+                <div class="cta-item">
+                    <div class="cta-icon">&#127760;</div>
+                    <span>tiktoktotrip.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11</div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        const slides = document.querySelectorAll('.slide');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        function scrollToSlide(index) {
+            slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update active dot on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(slides).indexOf(entry.target);
+                    navDots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentIndex = Array.from(navDots).findIndex(dot => dot.classList.contains('active'));
+
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentIndex < slides.length - 1) {
+                    scrollToSlide(currentIndex + 1);
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    scrollToSlide(currentIndex - 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

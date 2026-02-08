@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're on the List! | TikTok-to-Trip</title>
+    <meta name="description" content="Thank you for joining the TikTok-to-Trip waitlist. We'll notify you when we launch!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        },
+                        accent: {
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .success-check {
+            animation: scale-in 0.5s ease-out forwards;
+        }
+
+        @keyframes scale-in {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        @keyframes slide-up {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in-delayed {
+            animation: fade-in 0.6s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Confetti Container -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none overflow-hidden z-50"></div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="font-bold text-xl text-gray-900">TikTok-to-Trip</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4 py-16">
+        <div class="max-w-lg text-center">
+            <!-- Success Icon -->
+            <div class="relative inline-flex mb-8">
+                <div class="absolute inset-0 gradient-bg rounded-full blur-xl opacity-30 pulse-ring"></div>
+                <div class="relative w-24 h-24 gradient-bg rounded-full flex items-center justify-center success-check">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 slide-up">
+                You're on the List!
+            </h1>
+
+            <!-- Subheading -->
+            <p class="text-xl text-gray-600 mb-8 slide-up" style="animation-delay: 0.4s;">
+                Thanks for joining the TikTok-to-Trip waitlist. We'll let you know as soon as we're ready to turn your saved travel videos into real adventures.
+            </p>
+
+            <!-- Email Display -->
+            <div class="bg-gray-100 rounded-2xl p-6 mb-8 fade-in-delayed">
+                <p class="text-sm text-gray-500 mb-2">Confirmation will be sent to:</p>
+                <p id="user-email" class="text-lg font-semibold text-gray-900">your@email.com</p>
+            </div>
+
+            <!-- What's Next Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 fade-in-delayed" style="animation-delay: 0.8s;">
+                <h2 class="text-xl font-bold text-gray-900 mb-6">What happens next?</h2>
+
+                <div class="space-y-4 text-left">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 gradient-bg rounded-lg flex items-center justify-center text-white text-sm font-bold mr-4">
+                            1
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Check your inbox</h3>
+                            <p class="text-gray-600 text-sm">We'll send you a confirmation email with early access updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 gradient-bg rounded-lg flex items-center justify-center text-white text-sm font-bold mr-4">
+                            2
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Save your favorite travel content</h3>
+                            <p class="text-gray-600 text-sm">Start collecting those TikToks, Reels, and YouTube videos you want to turn into trips.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 gradient-bg rounded-lg flex items-center justify-center text-white text-sm font-bold mr-4">
+                            3
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Get early access</h3>
+                            <p class="text-gray-600 text-sm">We'll invite you to try TikTok-to-Trip before anyone else, with exclusive perks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share Section -->
+            <div class="fade-in-delayed" style="animation-delay: 1s;">
+                <p class="text-gray-600 mb-4">Know someone who'd love this? Share it!</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://twitter.com/intent/tweet?text=Just%20joined%20the%20waitlist%20for%20TikTok-to-Trip!%20%F0%9F%8C%8D%20Turn%20travel%20videos%20into%20real%20trip%20itineraries.&url=https://tiktoktotrip.com"
+                       target="_blank"
+                       class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
+                        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://tiktoktotrip.com&title=TikTok-to-Trip&summary=Turn%20travel%20videos%20into%20real%20trip%20itineraries"
+                       target="_blank"
+                       class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
+                        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:?subject=Check out TikTok-to-Trip&body=I just joined the waitlist for this cool app that turns travel videos into real trip itineraries! Check it out: https://tiktoktotrip.com"
+                       class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Back to Home -->
+            <a href="index.html" class="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium mt-8 fade-in-delayed" style="animation-delay: 1.2s;">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to homepage
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2026 TikTok-to-Trip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Get email from URL params or localStorage
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email') || localStorage.getItem('waitlist_email') || 'your@email.com';
+        document.getElementById('user-email').textContent = email;
+
+        // Confetti animation
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#f97316', '#ef4444', '#fbbf24', '#10b981', '#3b82f6', '#8b5cf6'];
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    container.appendChild(confetti);
+
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 50);
+            }
+        }
+
+        // Trigger confetti on page load
+        createConfetti();
+    </script>
+</body>
+</html>
